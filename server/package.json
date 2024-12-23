@@ -1,10 +1,10 @@
 {
   "name": "spotted-ssr-poc",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "build:server": "tsc --project ./tsconfig.json --outDir ./dist",
-    "start": "node ./dist/index.js"
+    "build:server": "webpack --config webpack.config.js",
+    "start": "node ./dist/server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,10 @@
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.2",
-    "typescript": "^5.7.2"
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.7.2",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-node-externals": "^3.0.0"
   }
 }
