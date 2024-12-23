@@ -1,0 +1,21 @@
+{
+  "name": "spotted-ssr-poc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build:server": "tsc --project ./tsconfig.json --outDir ./dist",
+    "start": "node ./dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}
