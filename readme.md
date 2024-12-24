@@ -1,4 +1,5 @@
-1. https://amorgunov.com/posts/2020-12-08-server-side-rendering-in-react/
+1. https://nils-mehlhorn.de/posts/typescript-nodejs-react-ssr/
+2. https://amorgunov.com/posts/2020-12-08-server-side-rendering-in-react/
 2. https://habr.com/ru/companies/kts/articles/566176/
 3. https://medium.com/@yahya.sahaja2/ssr-hot-module-redux-typescript-from-scratch-90e7120a98cc
 4. https://19.react.dev/reference/rsc/server-components#server-components-with-a-server
