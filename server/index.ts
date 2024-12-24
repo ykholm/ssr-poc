@@ -4,6 +4,7 @@ import path from 'path'
 import compression from 'compression'
 import {renderHtml} from "./render";
 import serialize from "serialize-javascript";
+import {DataItem} from "../src/DemoPage";
 
 const server = express()
 
@@ -36,10 +37,23 @@ try {
     process.exit(1) // Exit gracefully if assets fail to load
 }
 
-server.get('*', (req, res) => {
-    const initialData = { propFromSsr: "Welcome to SSR!" };
+const fetchDataFromServer = (): Promise<DataItem[]> => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve([
+                { id: 1, name: 'Item 1', description: 'Description of Item 1' },
+                { id: 2, name: 'Item 2', description: 'Description of Item 2' },
+                { id: 3, name: 'Item 3', description: 'Description of Item 3' },
+            ]);
+        }, 1000); // Simulate a 1-second server delay
+    });
+};
 
+server.get('*', async (req, res) => {
     try {
+        const items = await fetchDataFromServer()
+        const initialData = {propFromSsr: "It's SSR baby", items: items};
+
         const html = renderHtml(req.url, initialData);
         res.render('index', {
             assets: jsAssets,
