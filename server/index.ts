@@ -1,9 +1,7 @@
 import express from 'express'
 import fs from 'fs'
 import path from 'path'
-import React, {FC, ReactNode} from 'react'
-import ReactDOMServer from 'react-dom/server'
-import App from '../src/App'
+import {renderHtml} from "./render";
 
 const server = express()
 
@@ -25,9 +23,9 @@ try {
     process.exit(1) // Exit gracefully if assets fail to load
 }
 
-server.get('/', (req, res) => {
+server.get('/demo', (req, res) => {
     try {
-        const component = ReactDOMServer.renderToString(App as unknown as ReactNode)
+        const component = renderHtml(req.url);
         res.render('index', { assets: jsAssets, component })
     } catch (err) {
         console.error('Error rendering React component:', err)

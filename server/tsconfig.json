@@ -9,6 +9,7 @@
     "lib": ["es6", "dom"], // use JavaScript API ES6
     "target": "es6", // compile to ES6
     "jsx": "react-jsx", // compile JSX to React.createElement statements for SSR
+    "jsxImportSource": "react",
     "allowJs": true, // allow import of JS modules
     // enable strict type checking
     "strict": true,
