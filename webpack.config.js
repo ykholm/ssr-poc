@@ -9,7 +9,7 @@ module.exports = {
     },
     mode: 'production',
     output: {
-        path: path.resolve(__dirname + '/../dist/static'),
+        path: path.resolve(__dirname + '/server/dist/static'),
         filename: '[name].[contenthash].js',
         publicPath: '',
     },
