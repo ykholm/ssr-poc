@@ -18,7 +18,11 @@ const fetchDataFromServer = (): Promise<DataItem[]> => {
     });
 };
 
-const DemoPage: React.FC = () => {
+type Props = {
+    propFromSsr: string
+}
+
+const DemoPage: React.FC<Props> = ({propFromSsr}) => {
     const [data, setData] = useState<DataItem[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -35,7 +39,8 @@ const DemoPage: React.FC = () => {
 
     return (
         <div>
-            <h1>Demo Page</h1>
+            <h1>Demo page</h1>
+            <p>{`This prop is server rendered: ${propFromSsr}`}</p>
             {loading ? (
                 <p>Loading data...</p>
             ) : (

@@ -3,6 +3,7 @@ import fs from 'fs'
 import path from 'path'
 import compression from 'compression'
 import {renderHtml} from "./render";
+import serialize from "serialize-javascript";
 
 const server = express()
 
@@ -36,9 +37,15 @@ try {
 }
 
 server.get('*', (req, res) => {
+    const initialData = { propFromSsr: "Welcome to SSR!" };
+
     try {
-        const component = renderHtml(req.url);
-        res.render('index', { assets: jsAssets, component })
+        const html = renderHtml(req.url, initialData);
+        res.render('index', {
+            assets: jsAssets,
+            component: html,
+            initialData: serialize(initialData)
+        })
     } catch (err) {
         console.error('Error rendering React component:', err)
         res.status(500).send('Internal Server Error')

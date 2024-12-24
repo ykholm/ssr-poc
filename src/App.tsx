@@ -2,10 +2,14 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import DemoPage from "./DemoPage";
 
-const App: React.FC = () => {
+type Props = {
+    initialData: any
+}
+
+const App: React.FC<Props> = ({initialData}) => {
     return (
         <Routes>
-            <Route path="/demo" element={<DemoPage />} />
+            <Route path="/demo" element={<DemoPage {...initialData} />} />
             <Route path="/" element={
                 <div>
                     <h1>Welcome to the App</h1>
